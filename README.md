@@ -59,3 +59,17 @@ Open the main notebook and run all cells. If you use a different catalog extract
 ## Data notes
 
 The analysis describes the supplied catalog snapshot, not Netflix's current catalog. Counts and patterns depend on the dataset version and on rows removed during cleaning. The data is observational and does not explain why titles were added or removed. Confirm the dataset's source and reuse terms before redistribution.
+
+---
+
+## Architecture
+
+The notebook runs as a local or Colab analysis pipeline. It reads the catalog CSV, cleans the fields required for each chart, derives grouped summaries, and exports static visualizations.
+
+```mermaid
+flowchart LR
+  A[Netflix titles CSV] --> B[pandas load and cleaning]
+  B --> C[Group and summarize]
+  C --> D[Matplotlib visualizations]
+  D --> E[Notebook output and PNG charts]
+```
